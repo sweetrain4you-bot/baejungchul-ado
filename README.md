@@ -6,10 +6,10 @@
 - `style.css` / `main.js` — 디자인과 동작 (손댈 필요 없음)
 - `images/` — 사진을 넣을 폴더 (선택)
 
-## 소식 업데이트
-1. `news.js`를 메모장(맥은 텍스트편집기)으로 엽니다.
-2. `const NEWS = [` 바로 아래에 기존 블록 하나를 복사해 붙여넣고 날짜·제목·내용을 고칩니다.
-3. 저장 후 사이트 폴더를 다시 업로드합니다.
+## 소식 업데이트 (브라우저에서)
+1. https://github.com/sweetrain4you-bot/baejungchul-ado/blob/main/news.js 접속 (GitHub 로그인)
+2. 오른쪽 위 연필(✏️) 아이콘 → `const NEWS = [` 바로 아래에 기존 블록 하나를 복사해 붙여넣고 날짜·제목·내용 수정
+3. **Commit changes** 클릭 → 1~2분 뒤 배정철어도.kr 에 반영
 
 ```js
   {
@@ -20,10 +20,10 @@
   },
 ```
 
-## 처음 공개 전 채울 것
-- `index.html`의 **오시는 길**: `[상세 주소]`, `[전화번호]`, `[영업시간]`
-- 대표 사진: `images/portrait.jpg`로 넣고 `index.html`의 `<img ...>` 주석을 풉니다.
+## 사진 넣기
+- 저장소의 `images/` 폴더에 `portrait.jpg` 업로드(Add file → Upload files) 후 `index.html`의 `<img ...>` 주석을 풉니다.
 
-## 공개(호스팅) 방법 — 무료
-- **Netlify Drop** (가장 간단): https://app.netlify.com/drop 에 이 폴더를 끌어다 놓으면 주소가 생깁니다. 업데이트할 때도 같은 사이트에 폴더를 다시 끌어다 놓으면 됩니다.
-- 도메인(예: baejungchul.kr)은 가비아 등에서 구입 후 Netlify에 연결합니다.
+## 공개 정보
+- 주소: https://배정철어도.kr (GitHub Pages, 저장소 `sweetrain4you-bot/baejungchul-ado`)
+- `CNAME` 파일은 도메인 연결용이니 지우지 마세요.
+- DNS(후이즈): A `@` → 185.199.108.153 / .109.153 / .110.153 / .111.153, CNAME `www` → sweetrain4you-bot.github.io
