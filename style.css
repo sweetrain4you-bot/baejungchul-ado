@@ -222,6 +222,7 @@ b { font-weight: 600; }
 .visit dl { display: grid; grid-template-columns: 64px 1fr; gap: 14px 24px; font-size: 16px; }
 .visit dt { color: #b9ae96; font-size: 14px; padding-top: 2px; }
 .visit dd a { text-decoration: none; }
+.visit .hint { font-size: 13px; color: #b9ae96; margin-left: 4px; }
 .map-btn { border: 1px solid #efe9dc; padding: 14px 28px; text-decoration: none; font-size: 14px; transition: .2s; }
 .map-btn:hover { background: #efe9dc; color: var(--deep); }
 
