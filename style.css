@@ -225,6 +225,12 @@ b { font-weight: 600; }
 .map-btn { border: 1px solid #efe9dc; padding: 14px 28px; text-decoration: none; font-size: 14px; transition: .2s; }
 .map-btn:hover { background: #efe9dc; color: var(--deep); }
 
+.ig-link { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; transition: color .2s; }
+.ig-link:hover { color: var(--seal); }
+.visit .ig-link:hover { color: #fff; opacity: .8; }
+.ig { width: 16px; height: 16px; flex: none; }
+.footer .ig-link { margin-top: 10px; font-size: 13px; color: #b9ae96; }
+.footer .ig-link:hover { color: #efe9dc; }
 /* ── FOOTER ── */
 .footer { text-align: center; padding: 56px 16px; background: #0e161e; color: #8f8778; font-size: 14px; }
 .footer .seal { margin-bottom: 16px; }
