@@ -38,6 +38,21 @@ links.addEventListener('click', e => {
   }
 })();
 
+// 유튜브 영상: 누를 때만 플레이어를 불러옵니다 (가볍고 광고·추천이 먼저 뜨지 않음)
+document.querySelectorAll('.video-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const box = document.createElement('div');
+    box.className = 'video-card playing';
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${card.dataset.id}?autoplay=1&rel=0`;
+    f.title = card.querySelector('.title').textContent;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    box.append(f, card.querySelector('.meta'), card.querySelector('.title'));
+    card.replaceWith(box);
+  });
+});
+
 // 스크롤 등장 효과
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

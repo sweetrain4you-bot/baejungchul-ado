@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -58,12 +58,12 @@
       <h2>대표 소개</h2>
     </div>
     <div class="about-grid">
-      <div class="portrait" role="img" aria-label="배정철 대표 사진 자리">
-        <!-- 대표 사진이 준비되면 아래 주석을 풀고 images/ 폴더에 사진을 넣으세요.
-        <img src="images/portrait.jpg" alt="배정철 대표"> -->
-        <span>배 정 철</span>
-        <em>조리부장 · 대표</em>
-      </div>
+      <figure class="portrait-fig">
+        <div class="portrait">
+          <img src="images/portrait.jpg" alt="魚島 간판과 年中無休 현판 앞에 선 배정철 대표" loading="lazy">
+        </div>
+        <figcaption><b>年中無休</b> 연중무휴. 간판이 곧 그의 원칙입니다.</figcaption>
+      </figure>
       <div class="about-text">
         <p class="big">“저희 집에는 사장이 없어요.<br>모두가 동료일 뿐이죠.”</p>
         <p>전남 장성에서 6남매의 막내로 태어났습니다. 다섯 살에 아버지를 여의고, 어머니 홀로 키운 집안 형편 탓에 학업을 이어가지 못했습니다. 열여섯 살이던 1978년 경기 안양의 한 일식집에서 주방 일을 시작했고, 이후 15년 동안 서울의 이름난 일식집을 거치며 설거지와 허드렛일 속에서 어깨너머로 칼과 생선을 익혔습니다.</p>
@@ -93,6 +93,11 @@
         <p>설거지부터 시작한 주방을 대표가 된 지금도 직접 지킵니다. 반세기 한결같은 마음입니다.</p>
       </article>
     </div>
+
+    <figure class="wide-photo">
+      <img src="images/kitchen.jpg" alt="주방에서 조리사들과 함께 선 배정철 대표" loading="lazy">
+      <figcaption>어도의 주방 식구들. 이곳에서는 모두가 동료입니다.</figcaption>
+    </figure>
   </section>
 
   <!-- ───────── JOURNEY ───────── -->
@@ -125,6 +130,16 @@
       “식당을 찾아주신 고객들의 따뜻한 마음이 모여<br>누군가의 생명을 살리는 기적이 됐습니다.”
       <cite>— 배정철, 2026년 서울대병원 후원금 전달식에서</cite>
     </blockquote>
+
+    <figure class="mother">
+      <img src="images/mother.jpg" alt="어머니와 함께 웃고 있는 배정철 대표" loading="lazy">
+      <figcaption>
+        <span class="craft-label">나눔의 뿌리</span>
+        <h3>어머니에게서 배운 것</h3>
+        <p>다섯 살에 아버지를 여읜 뒤 6남매를 홀로 키우면서도 이웃과 나누며 살던 어머니. 그는 자신의 나눔이 그 모습에서 시작됐다고 말합니다.</p>
+        <p>어머니께 7년 동안 매일 손편지를 써 2,554통을 모았고, 그 편지들은 한 권의 책이 되었습니다.</p>
+      </figcaption>
+    </figure>
 
     <div class="giving-chart" aria-label="서울대병원 누적 후원금 추이">
       <p class="chart-title">서울대병원 누적 후원금 <span>(억 원)</span></p>
@@ -188,6 +203,19 @@
       <span class="num">06</span>
       <h2>언론과 영상</h2>
     </div>
+    <!-- 영상 추가: 아래 블록을 복사해 data-id에 유튜브 주소의 v= 뒤 값을 넣으세요 -->
+    <div class="videos">
+      <button class="video-card" data-id="V5NxYmrTKiw" aria-label="영상 재생: 소년의 약속, 사모곡">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/V5NxYmrTKiw/hqdefault.jpg" alt="" loading="lazy"><i class="play" aria-hidden="true"></i></span>
+        <span class="meta">유감독의 아름다운 사람</span>
+        <span class="title">30년 동안 이어 온 나눔, 소년의 약속과 사모곡</span>
+      </button>
+      <button class="video-card" data-id="AXJM8uq3chY" aria-label="영상 재생: 배정철 대표의 기부 이야기">
+        <span class="thumb"><img src="https://i.ytimg.com/vi/AXJM8uq3chY/hqdefault.jpg" alt="" loading="lazy"><i class="play" aria-hidden="true"></i></span>
+        <span class="meta">의학채널 비온뒤</span>
+        <span class="title">23년간 20억 기부 가능하신가요? 배정철 대표의 기부 이야기</span>
+      </button>
+    </div>
     <ul class="press">
       <li><a href="https://www.nursenews.co.kr/news/articleView.html?idxno=44489" target="_blank" rel="noopener"><span>간호사신문 · 2026.09</span>“손님들과 함께 만든 기적”… 28년째 이어진 24억 원의 나눔</a></li>
       <li><a href="https://www.medicaldaily.co.kr/post/121013" target="_blank" rel="noopener"><span>의약일보 · 2026.09</span>28년 나눔 ‘배정철어도’, 1천 원 모아 24억 기적</a></li>
@@ -196,7 +224,6 @@
       <li><a href="https://www.etoday.co.kr/news/view/1113030" target="_blank" rel="noopener"><span>이투데이 · 2015.04</span>배정철 어도 대표, 저소득층 환자 치료비 1억원 전달</a></li>
       <li><a href="https://www.medicaltimes.com/Mobile/News/NewsView.html?ID=1081350" target="_blank" rel="noopener"><span>메디칼타임즈 · 2013.03</span>15년간 총 11억원 저소득층 환자 지원해온 일식집 사장</a></li>
       <li><a href="https://lady.khan.co.kr/issue/article/4257" target="_blank" rel="noopener"><span>레이디경향 · 2004.03</span>횟집하며 손님 1인당 적립, 난치병 어린이 돕는 배정철</a></li>
-      <li class="video"><a href="https://www.youtube.com/watch?v=AXJM8uq3chY" target="_blank" rel="noopener"><span>YouTube · 영상</span>23년간 20억 기부 가능하신가요? — ‘배정철 어도’ 배정철 대표의 기부 이야기</a></li>
       <li><a href="https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=f6cccefc-69ab-4943-8f46-8318e4480397" target="_blank" rel="noopener"><span>대한민국 구석구석 · 한국관광공사</span>배정철 어도 — 30년 넘게 한자리를 지켜 온 자연산 전문 일식당</a></li>
     </ul>
   </section>
@@ -229,6 +256,6 @@
 </footer>
 
 <script src="news.js"></script>
-<script src="main.js"></script>
+<script src="main.js?v=2"></script>
 </body>
 </html>

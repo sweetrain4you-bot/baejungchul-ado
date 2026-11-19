@@ -113,6 +113,32 @@ b { font-weight: 600; }
 .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .portrait span { font-family: var(--serif); font-size: 34px; font-weight: 600; letter-spacing: .3em; writing-mode: vertical-rl; }
 .portrait em { font-style: normal; font-size: 12px; letter-spacing: .2em; color: #b9ae96; }
+/* ── PHOTOS ── */
+.portrait-fig figcaption { margin-top: 14px; font-size: 13px; color: var(--muted); letter-spacing: .02em; }
+.portrait-fig figcaption b { font-family: var(--serif); color: var(--seal); font-weight: 700; letter-spacing: .15em; margin-right: 6px; }
+.portrait img, .wide-photo img, .mother img { filter: saturate(.82) contrast(1.02); }
+.wide-photo { margin-top: 64px; }
+.wide-photo img { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; object-position: center 35%; }
+.wide-photo figcaption, .mother figcaption .cap { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.mother { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; margin: 0 0 80px; }
+.mother img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 30%; display: block; }
+.mother h3 { font-size: 24px; margin-bottom: 16px; }
+.mother p { color: var(--ink-2); font-size: 15px; margin-bottom: 12px; }
+
+/* ── VIDEOS ── */
+.videos { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px; }
+.video-card { display: block; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+.video-card .thumb { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--deep); }
+.video-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.8) brightness(.82); transition: transform .5s ease, filter .3s; }
+.video-card:hover .thumb img { transform: scale(1.03); filter: saturate(.9) brightness(.9); }
+.video-card .play { position: absolute; left: 50%; top: 50%; width: 62px; height: 62px; margin: -31px 0 0 -31px; border-radius: 50%; background: rgba(168, 50, 30, .92); }
+.video-card .play::after { content: ""; position: absolute; left: 25px; top: 20px; border-left: 17px solid #fff; border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+.video-card .meta { display: block; font-size: 12px; color: var(--muted); letter-spacing: .05em; margin-top: 14px; }
+.video-card .title { display: block; font-family: var(--serif); font-size: 17px; line-height: 1.55; margin-top: 4px; }
+.video-card:hover .title { color: var(--seal); }
+.video-card iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+.video-card.playing { cursor: default; }
+
 .about-text p { color: var(--ink-2); margin-bottom: 20px; font-size: 16px; }
 .about-text .big {
   font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.6;
@@ -216,7 +242,9 @@ b { font-weight: 600; }
   .numbers div:nth-child(2) { border-right: 0; }
   .numbers div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .portrait { max-width: 280px; }
+  .portrait-fig { max-width: 300px; }
+  .mother, .videos { grid-template-columns: 1fr; gap: 28px; }
+  .wide-photo img { aspect-ratio: 16 / 10; }
   .craft, .giving-list, .honors, .press { grid-template-columns: 1fr; }
   .br-wide { display: none; }
 }
