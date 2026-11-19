@@ -118,10 +118,14 @@ b { font-weight: 600; }
   font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.6;
   color: var(--ink); margin-bottom: 36px; padding-left: 20px; border-left: 3px solid var(--seal);
 }
-.craft { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 80px; }
+.craft-head { text-align: center; margin: 96px 0 36px; }
+.craft-head h3 { display: inline-flex; align-items: center; gap: 18px; font-size: clamp(22px, 2.6vw, 28px); letter-spacing: .08em; }
+.craft-head h3::before, .craft-head h3::after { content: ""; width: 40px; height: 1px; background: var(--seal); }
+.craft-head p { color: var(--muted); font-size: 14px; margin-top: 6px; letter-spacing: .04em; }
+.craft { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .craft article { background: var(--paper); padding: 36px 30px; }
 .craft h3 { font-size: 24px; margin-bottom: 12px; }
-.craft h3::before { content: ""; display: block; width: 18px; height: 2px; background: var(--seal); margin-bottom: 18px; }
+.craft-label { display: block; font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--seal); letter-spacing: .12em; margin-bottom: 14px; }
 .craft p { font-size: 15px; color: var(--ink-2); }
 
 /* ── TIMELINE ── */
@@ -221,7 +225,7 @@ b { font-weight: 600; }
   .hero { min-height: 78vh; padding: 80px 16px 110px; }
   .numbers strong { font-size: 28px; }
   .numbers div { padding: 22px 16px; }
-  .craft { margin-top: 56px; }
+  .craft-head { margin: 64px 0 28px; }
   .timeline::before { left: 4px; }
   .timeline li { grid-template-columns: 1fr; gap: 4px; padding-left: 28px; padding-bottom: 32px; }
   .timeline li::before { left: 0; }
