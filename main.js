@@ -43,11 +43,18 @@ document.querySelectorAll('.video-card').forEach(card => {
   card.addEventListener('click', () => {
     const box = document.createElement('div');
     box.className = 'video-card playing';
-    const f = document.createElement('iframe');
-    f.src = `https://www.youtube-nocookie.com/embed/${card.dataset.id}?autoplay=1&rel=0`;
-    f.title = card.querySelector('.title').textContent;
-    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    f.allowFullscreen = true;
+    let f;
+    if (card.dataset.src) { // 사이트에 직접 올린 영상
+      f = document.createElement('video');
+      f.src = card.dataset.src;
+      f.controls = true; f.autoplay = true; f.playsInline = true;
+    } else { // 유튜브 영상
+      f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${card.dataset.id}?autoplay=1&rel=0`;
+      f.title = card.querySelector('.title').textContent;
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+    }
     box.append(f, card.querySelector('.meta'), card.querySelector('.title'));
     card.replaceWith(box);
   });

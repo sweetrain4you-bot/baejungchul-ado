@@ -1,3 +1,5 @@
 .DS_Store
 QR코드/
 KakaoTalk_*
+*.mp4
+!videos/*.mp4
