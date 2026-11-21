@@ -75,9 +75,23 @@ b { font-weight: 600; }
   writing-mode: vertical-rl;
   font-family: var(--serif); font-weight: 900;
   font-size: clamp(120px, 20vw, 260px); line-height: 1;
-  color: rgba(239, 233, 220, .06);
   user-select: none;
+  transition: transform .6s ease-out;
 }
+/* 새긴 듯한 입체 + 가끔 스치는 금빛 */
+.hero-mark .base {
+  color: rgba(239, 233, 220, .12);
+  text-shadow: -1px -1px 0 rgba(255,255,255,.10), 2px 3px 0 rgba(0,0,0,.45), 6px 12px 24px rgba(0,0,0,.35);
+}
+.hero-mark .shine {
+  position: absolute; inset: 0; color: transparent;
+  background: linear-gradient(115deg, transparent 40%, rgba(226,196,140,.5) 50%, transparent 60%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text; background-clip: text;
+  animation: mark-shine 9s ease-in-out infinite;
+}
+@keyframes mark-shine { 0% { background-position: 100% 100%; } 60%, 100% { background-position: 0% 0%; } }
+@media (prefers-reduced-motion: reduce) { .hero-mark .shine { animation: none; opacity: 0; } }
 
 /* ── NUMBERS ── */
 .numbers {
@@ -278,4 +292,10 @@ b { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .section, .numbers { opacity: 1; transform: none; transition: none; }
+}
+
+/* 휴대폰: 魚島가 제목 뒤에 겹치므로 은은하게 */
+@media (max-width: 900px) {
+  .hero-mark .base { color: rgba(239, 233, 220, .07); text-shadow: 2px 3px 0 rgba(0,0,0,.3); }
+  .hero-mark .shine { opacity: .6; }
 }

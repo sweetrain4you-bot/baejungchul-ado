@@ -60,6 +60,15 @@ document.querySelectorAll('.video-card').forEach(card => {
   });
 });
 
+// 첫 화면 魚島: 마우스를 따라 아주 살짝 움직임 (마우스가 있는 기기에서만)
+const mark = document.querySelector('.hero-mark');
+if (mark && matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+  document.querySelector('.hero').addEventListener('mousemove', e => {
+    const x = (e.clientX / innerWidth - .5) * 10, y = (e.clientY / innerHeight - .5) * 10;
+    mark.style.transform = `translateY(-50%) translate(${x}px, ${y}px)`;
+  });
+}
+
 // 스크롤 등장 효과
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
