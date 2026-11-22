@@ -61,20 +61,22 @@ b { font-weight: 600; }
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at 80% 30%, rgba(168,50,30,.18), transparent 55%);
 }
-.hero-inner { position: relative; z-index: 1; max-width: 640px; }
+.hero { --mark: clamp(120px, 20vw, 260px); }
+/* 글이 오른쪽 魚島 밑으로 들어가지 않도록 폭을 제한 */
+.hero-inner { position: relative; z-index: 1; max-width: min(640px, calc(100% - var(--mark) - 40px)); }
 .eyebrow { font-size: 13px; letter-spacing: .22em; color: #b9ae96; margin-bottom: 28px; }
 .hero h1 {
   font-family: var(--serif); font-weight: 600;
   font-size: clamp(36px, 6vw, 64px); line-height: 1.35; letter-spacing: -.01em;
   margin-bottom: 32px;
 }
-.lede { font-size: clamp(15px, 1.7vw, 17px); color: #c8bfab; font-weight: 300; line-height: 2; }
+.lede { font-size: clamp(15px, 1.7vw, 17px); color: #c8bfab; font-weight: 300; line-height: 2; word-break: keep-all; }
 .hero-mark {
   position: absolute; right: max(16px, calc((100% - var(--w)) / 2)); top: 50%;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   font-family: var(--serif); font-weight: 900;
-  font-size: clamp(120px, 20vw, 260px); line-height: 1;
+  font-size: var(--mark); line-height: 1;
   user-select: none;
   transition: transform .6s ease-out;
 }
@@ -302,8 +304,14 @@ b { font-weight: 600; }
   .section, .numbers { opacity: 1; transform: none; transition: none; }
 }
 
-/* 휴대폰: 魚島가 제목 뒤에 겹치므로 은은하게 */
-@media (max-width: 900px) {
-  .hero-mark .base { color: rgba(239, 233, 220, .07); text-shadow: 2px 3px 0 rgba(0,0,0,.3); }
-  .hero-mark .shine { opacity: .6; }
+/* 휴대폰: 魚島를 오른쪽 위로 작게 옮겨 글과 겹치지 않게 */
+@media (max-width: 600px) {
+  .hero { --mark: 64px; }
+  .hero-inner { max-width: 100%; }
+  .hero { padding: 160px 16px 80px; }
+  .hero-mark { top: 28px; transform: none; }
+  .lede { font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .lede { font-size: 13px; }
 }

@@ -64,6 +64,7 @@ document.querySelectorAll('.video-card').forEach(card => {
 const mark = document.querySelector('.hero-mark');
 if (mark && matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
   document.querySelector('.hero').addEventListener('mousemove', e => {
+    if (innerWidth <= 600) return;
     const x = (e.clientX / innerWidth - .5) * 10, y = (e.clientY / innerHeight - .5) * 10;
     mark.style.transform = `translateY(-50%) translate(${x}px, ${y}px)`;
   });
