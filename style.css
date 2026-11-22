@@ -88,7 +88,7 @@ b { font-weight: 600; }
   background: linear-gradient(115deg, transparent 40%, rgba(226,196,140,.5) 50%, transparent 60%);
   background-size: 300% 300%;
   -webkit-background-clip: text; background-clip: text;
-  animation: mark-shine 9s ease-in-out infinite;
+  animation: mark-shine 5s ease-in-out infinite;
 }
 @keyframes mark-shine { 0% { background-position: 100% 100%; } 60%, 100% { background-position: 0% 0%; } }
 @media (prefers-reduced-motion: reduce) { .hero-mark .shine { animation: none; opacity: 0; } }
@@ -243,12 +243,6 @@ b { font-weight: 600; }
 .mini-map .map-link { display: inline-block; margin-top: 10px; font-size: 13px; color: #b9ae96; text-decoration: none; }
 .mini-map .map-link:hover { color: #efe9dc; }
 
-.ig-link { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; transition: color .2s; }
-.ig-link:hover { color: var(--seal); }
-.visit .ig-link:hover { color: #fff; opacity: .8; }
-.ig { width: 16px; height: 16px; flex: none; }
-.footer .ig-link { margin-top: 10px; font-size: 13px; color: #b9ae96; }
-.footer .ig-link:hover { color: #efe9dc; }
 /* ── FOOTER ── */
 .footer { text-align: center; padding: 56px 16px; background: #0e161e; color: #8f8778; font-size: 14px; }
 .footer .seal { margin-bottom: 16px; }
