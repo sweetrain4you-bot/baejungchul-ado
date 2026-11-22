@@ -197,10 +197,10 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
     return { node, to, fmt };
   });
   const run = () => nums.forEach((n, i) => {
-    const start = performance.now() + i * 140, dur = 1800;
+    const start = performance.now() + 300 + i * 280, dur = 3200;
     const step = now => {
       const t = Math.min(1, Math.max(0, (now - start) / dur));
-      n.node.textContent = n.fmt(n.to * (1 - Math.pow(1 - t, 4)));
+      n.node.textContent = n.fmt(n.to * (t === 1 ? 1 : 1 - Math.pow(2, -9 * t)));
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
