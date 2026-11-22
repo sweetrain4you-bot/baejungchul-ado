@@ -75,3 +75,56 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
+
+// 문의 양식 (Google Apps Script → 지메일, 코드는 apps-script/Code.gs)
+(function ask() {
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwRif0xncbAKOpn8yT_stpajyr68xOf3BQqYl9eVW89HXnj2vadFQPb6SZLtSupvVxisw/exec'; // 배포한 Apps Script 웹 앱 주소 (…/exec)
+  const form = document.getElementById('ask');
+  const open = document.getElementById('ask-open');
+  if (!form || !open) return;
+  const $ = s => form.querySelector(s);
+  const resv = $('.ask-resv'), consent = $('.ask-consent'), msg = $('.ask-msg'), send = $('.ask-send');
+  const opt = [...form.querySelectorAll('.ask-who .opt')];
+
+  open.addEventListener('click', () => {
+    form.hidden = !form.hidden;
+    open.setAttribute('aria-expanded', !form.hidden);
+    if (!form.hidden) $('textarea').focus();
+  });
+
+  const isResv = () => form.kind.value === '예약 문의';
+  const update = () => {
+    resv.hidden = !isResv();
+    opt.forEach(o => o.textContent = isResv() ? '(필수)' : '(선택)');
+    consent.hidden = !(isResv() || form.name.value.trim() || form.phone.value.trim());
+  };
+  form.addEventListener('input', e => { e.target.classList.remove('invalid'); update(); });
+  form.addEventListener('change', update);
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    const need = [form.message];
+    if (isResv()) need.push(form.name, form.phone);
+    const bad = need.filter(el => !el.value.trim());
+    if (bad.length) { bad.forEach(el => el.classList.add('invalid')); bad[0].focus(); msg.textContent = isResv() ? '예약 문의는 이름과 연락처가 필요합니다.' : '내용을 적어 주세요.'; return; }
+    if (!consent.hidden && !form.consent.checked) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; form.consent.focus(); return; }
+    if (form.botcheck.checked) return;
+
+    send.disabled = true; msg.textContent = '보내는 중…';
+    try {
+      // text/plain으로 보내야 브라우저 사전 확인(CORS) 없이 Apps Script에 바로 전달됩니다
+      const res = await fetch(ENDPOINT, { method: 'POST', body: JSON.stringify({
+        kind: form.kind.value, date: form.date.value, time: form.time.value, people: form.people.value,
+        name: form.name.value.trim(), phone: form.phone.value.trim(), message: form.message.value.trim(),
+        consent: !consent.hidden && form.consent.checked, botcheck: false
+      }) });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      form.reset(); update();
+      msg.textContent = '잘 받았습니다. 감사합니다.';
+    } catch (err) {
+      msg.textContent = '보내지 못했습니다. 잠시 후 다시 시도하시거나 전화로 연락 주세요.';
+    } finally { send.disabled = false; }
+  });
+})();

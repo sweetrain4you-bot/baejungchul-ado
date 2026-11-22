@@ -256,6 +256,42 @@ b { font-weight: 600; }
 .visit .hint { font-size: 13px; color: #b9ae96; margin-left: 4px; }
 .visit .map-link { margin-left: 8px; font-size: 13px; color: #b9ae96; text-decoration: none; white-space: nowrap; }
 .visit .map-link:hover { color: #efe9dc; }
+/* 문의 양식 */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ask-open { background: none; border: 0; padding: 0; font: inherit; color: #efe9dc; cursor: pointer; border-bottom: 1px solid rgba(239,233,220,.35); }
+.ask-open:hover { border-color: #efe9dc; }
+.ask { max-width: 640px; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(239,233,220,.15); display: grid; gap: 18px; }
+.ask[hidden] { display: none; }
+.ask-note { font-size: 13px; color: #b9ae96; }
+.ask-note a { color: #efe9dc; }
+.ask-kind { border: 0; padding: 0; display: flex; gap: 24px; font-size: 15px; }
+.ask-kind label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.ask input[type=radio], .ask input[type=checkbox] { accent-color: var(--seal); width: 16px; height: 16px; }
+.ask label { font-size: 13px; color: #b9ae96; }
+.ask-full, .ask-who label, .ask-resv label { display: grid; gap: 6px; }
+.ask-who, .ask-resv { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ask-resv { grid-template-columns: 1.4fr 1fr .8fr; }
+.ask-resv[hidden] { display: none; }
+.ask input[type=text], .ask input[type=tel], .ask input[type=date], .ask input[type=time], .ask input[type=number], .ask textarea {
+  width: 100%; font: inherit; font-size: 15px; color: #efe9dc; background: rgba(239,233,220,.05);
+  border: 1px solid rgba(239,233,220,.2); border-radius: 0; padding: 10px 12px; color-scheme: dark; }
+.ask textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
+.ask input:focus, .ask textarea:focus { outline: none; border-color: #b9ae96; background: rgba(239,233,220,.08); }
+.ask .opt { color: #8a8578; font-size: 12px; }
+.ask-consent { display: flex; gap: 10px; align-items: flex-start; line-height: 1.6; }
+.ask-consent[hidden] { display: none; }
+.ask-consent small { display: block; color: #8a8578; font-size: 12px; }
+.ask-foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.ask-send { font: inherit; font-size: 15px; color: #fff; background: var(--seal); border: 0; padding: 11px 34px; cursor: pointer; letter-spacing: .1em; }
+.ask-send:hover { filter: brightness(1.1); }
+.ask-send:disabled { opacity: .5; cursor: default; }
+.ask-msg { font-size: 13px; color: #e2c48c; }
+.ask .invalid { border-color: #d9826d !important; }
+@media (max-width: 560px) {
+  .ask-who { grid-template-columns: 1fr; }
+  .ask-resv { grid-template-columns: 1fr 1fr; }
+  .ask-resv .d { grid-column: 1 / -1; }
+}
 
 /* ── FOOTER ── */
 .footer { text-align: center; padding: 56px 16px; background: #0e161e; color: #8f8778; font-size: 14px; }

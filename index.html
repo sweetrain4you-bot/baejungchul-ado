@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 
@@ -253,8 +253,34 @@
         <dt>영업</dt><dd>매일 11:30 – 22:30 · 연중무휴</dd>
         <dt>메뉴</dt><dd>자연산 숙성회 · 초밥 · 정식 · 점심 특선</dd>
         <dt>좌석</dt><dd>룸 · 단체석 보유, 예약 권장</dd>
+        <dt>문의</dt><dd><button type="button" class="ask-open" id="ask-open" aria-expanded="false" aria-controls="ask">의견·예약 문의 남기기 →</button></dd>
       </dl>
     </div>
+
+    <form class="ask" id="ask" hidden novalidate>
+      <p class="ask-note">예약은 전화(<a href="tel:025487766">02-548-7766</a>)가 가장 빠릅니다. 남겨 주신 글은 확인 후 답변드립니다.</p>
+      <fieldset class="ask-kind">
+        <legend class="sr">문의 종류</legend>
+        <label><input type="radio" name="kind" value="의견" checked> 의견</label>
+        <label><input type="radio" name="kind" value="예약 문의"> 예약 문의</label>
+      </fieldset>
+      <div class="ask-resv" hidden>
+        <label class="d"><span>희망 날짜</span><input type="date" name="date"></label>
+        <label><span>시간</span><input type="time" name="time" step="1800"></label>
+        <label><span>인원</span><input type="number" name="people" min="1" max="60" inputmode="numeric"></label>
+      </div>
+      <label class="ask-full"><span>내용</span><textarea name="message" rows="4" required maxlength="2000" placeholder="자유롭게 남겨 주세요."></textarea></label>
+      <div class="ask-who">
+        <label><span>이름 <small class="opt">(선택)</small></span><input type="text" name="name" maxlength="40" autocomplete="name"></label>
+        <label><span>연락처 <small class="opt">(선택)</small></span><input type="tel" name="phone" maxlength="20" autocomplete="tel" placeholder="010-0000-0000"></label>
+      </div>
+      <label class="ask-consent" hidden><input type="checkbox" name="consent"><span>개인정보 수집·이용에 동의합니다. <small>수집 항목: 이름, 연락처 · 목적: 문의 답변 · 보관: 3개월 후 삭제</small></span></label>
+      <input type="checkbox" name="botcheck" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="ask-foot">
+        <button type="submit" class="ask-send">보내기</button>
+        <span class="ask-msg" role="status" aria-live="polite"></span>
+      </div>
+    </form>
   </section>
 
 </main>
@@ -265,6 +291,6 @@
 </footer>
 
 <script src="news.js"></script>
-<script src="main.js?v=5"></script>
+<script src="main.js?v=6"></script>
 </body>
 </html>
