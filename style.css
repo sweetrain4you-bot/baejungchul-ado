@@ -130,12 +130,14 @@ b { font-weight: 600; }
 /* ── PHOTOS ── */
 .portrait-fig figcaption { margin-top: 14px; font-size: 13px; color: var(--muted); letter-spacing: .02em; }
 .portrait-fig figcaption b { font-family: var(--serif); color: var(--seal); font-weight: 700; letter-spacing: .15em; margin-right: 6px; }
-.portrait img, .wide-photo img, .mother img { filter: saturate(.82) contrast(1.02); }
+.portrait img, .wide-photo img { filter: saturate(.82) contrast(1.02); }
 .wide-photo { margin-top: 64px; }
 .wide-photo img { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; object-position: center 35%; }
 .wide-photo figcaption, .mother figcaption .cap { font-size: 13px; color: var(--muted); margin-top: 12px; }
 .mother { display: grid; grid-template-columns: 380px minmax(0, 560px); gap: 48px; align-items: center; margin: 0 0 80px; }
-.mother img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 30%; display: block; }
+.mother .books { display: flex; gap: 22px; align-items: flex-end; justify-content: center; padding: 36px 20px; background: var(--paper-2); }
+.mother .books img { width: 46%; display: block; box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 14px 28px rgba(0,0,0,.18); }
+.mother .books img:last-child { transform: translateY(-14px); }
 .mother h3 { font-size: 24px; margin-bottom: 16px; }
 .mother p { color: var(--ink-2); font-size: 15px; margin-bottom: 12px; }
 
@@ -263,7 +265,7 @@ b { font-weight: 600; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .portrait-fig { max-width: 240px; }
   .mini-map { width: 100%; }
-  .mother img { max-width: 320px; }
+  .mother .books { max-width: 360px; }
   .mother, .videos { grid-template-columns: 1fr; gap: 28px; }
   .wide-photo img { aspect-ratio: 16 / 10; }
   .craft, .giving-list, .honors, .press { grid-template-columns: 1fr; }
