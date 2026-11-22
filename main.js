@@ -163,7 +163,6 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
 
 // 스크롤 타이포 애니메이션: 제목은 글자씩, 큰 문장은 줄씩 올라옴
 (function typo() {
-  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
   const lines = el => {
     el.innerHTML = el.innerHTML.split(/<br[^>]*>/i)
       .map((s, i) => `<span class="ln"><span class="ln-i" style="--i:${i}">${s.trim()}</span></span>`).join('');
@@ -189,7 +188,7 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
 // 첫 화면 아래 숫자: 보이면 0부터 힘있게 올라감
 (function countUp() {
   const box = document.querySelector('.numbers');
-  if (!box || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  if (!box) return;
   const nums = [...box.querySelectorAll('strong')].map(s => {
     const node = s.firstChild, raw = node.textContent.trim();
     const dec = (raw.split('.')[1] || '').length, to = parseFloat(raw.replace(/,/g, ''));
