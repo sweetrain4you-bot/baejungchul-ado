@@ -83,8 +83,7 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
   const open = document.getElementById('ask-open');
   if (!form || !open) return;
   const $ = s => form.querySelector(s);
-  const resv = $('.ask-resv'), consent = $('.ask-consent'), msg = $('.ask-msg'), send = $('.ask-send');
-  const opt = [...form.querySelectorAll('.ask-who .opt')];
+  const consent = $('.ask-consent'), msg = $('.ask-msg'), send = $('.ask-send');
 
   open.addEventListener('click', () => {
     form.hidden = !form.hidden;
@@ -92,11 +91,9 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
     if (!form.hidden) $('textarea').focus();
   });
 
-  const isResv = () => form.kind.value === '예약 문의';
+  // 이름이나 연락처를 적으면 개인정보 동의 칸이 나타남
   const update = () => {
-    resv.hidden = !isResv();
-    opt.forEach(o => o.textContent = isResv() ? '(필수)' : '(선택)');
-    consent.hidden = !(isResv() || form.name.value.trim() || form.phone.value.trim());
+    consent.hidden = !(form.name.value.trim() || form.phone.value.trim());
   };
   form.addEventListener('input', e => { e.target.classList.remove('invalid'); update(); });
   form.addEventListener('change', update);
@@ -104,10 +101,7 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
   form.addEventListener('submit', async e => {
     e.preventDefault();
     form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-    const need = [form.message];
-    if (isResv()) need.push(form.name, form.phone);
-    const bad = need.filter(el => !el.value.trim());
-    if (bad.length) { bad.forEach(el => el.classList.add('invalid')); bad[0].focus(); msg.textContent = isResv() ? '예약 문의는 이름과 연락처가 필요합니다.' : '내용을 적어 주세요.'; return; }
+    if (!form.message.value.trim()) { form.message.classList.add('invalid'); form.message.focus(); msg.textContent = '내용을 적어 주세요.'; return; }
     if (!consent.hidden && !form.consent.checked) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; form.consent.focus(); return; }
     if (form.botcheck.checked) return;
 
@@ -115,7 +109,7 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
     try {
       // text/plain으로 보내야 브라우저 사전 확인(CORS) 없이 Apps Script에 바로 전달됩니다
       const res = await fetch(ENDPOINT, { method: 'POST', body: JSON.stringify({
-        kind: form.kind.value, date: form.date.value, time: form.time.value, people: form.people.value,
+        kind: '의견',
         name: form.name.value.trim(), phone: form.phone.value.trim(), message: form.message.value.trim(),
         consent: !consent.hidden && form.consent.checked, botcheck: false
       }) });

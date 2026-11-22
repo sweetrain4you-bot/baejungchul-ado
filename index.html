@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body>
 
@@ -259,17 +259,7 @@
     </div>
 
     <form class="ask" id="ask" hidden novalidate>
-      <p class="ask-note">예약은 전화(<a href="tel:025487766">02-548-7766</a>)가 가장 빠릅니다. 남겨 주신 글은 확인 후 답변드립니다.</p>
-      <fieldset class="ask-kind">
-        <legend class="sr">문의 종류</legend>
-        <label><input type="radio" name="kind" value="의견" checked> 의견</label>
-        <label><input type="radio" name="kind" value="예약 문의"> 예약 문의</label>
-      </fieldset>
-      <div class="ask-resv" hidden>
-        <label class="d"><span>희망 날짜</span><input type="date" name="date"></label>
-        <label><span>시간</span><input type="time" name="time" step="1800"></label>
-        <label><span>인원</span><input type="number" name="people" min="1" max="60" inputmode="numeric"></label>
-      </div>
+      <p class="ask-note">남겨 주신 말씀은 하나하나 소중히 읽고, 더 나은 어도를 만드는 데 참고하겠습니다.</p>
       <label class="ask-full"><span>내용</span><textarea name="message" rows="4" required maxlength="2000" placeholder="자유롭게 남겨 주세요."></textarea></label>
       <div class="ask-who">
         <label><span>이름 <small class="opt">(선택)</small></span><input type="text" name="name" maxlength="40" autocomplete="name"></label>
@@ -292,6 +282,6 @@
 </footer>
 
 <script src="news.js"></script>
-<script src="main.js?v=11"></script>
+<script src="main.js?v=12"></script>
 </body>
 </html>
