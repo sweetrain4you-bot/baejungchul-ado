@@ -208,3 +208,12 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
   const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); io.disconnect(); } }, { threshold: 0.5 });
   io.observe(box);
 })();
+
+// 첫 화면 배경 영상: 재생이 준비되면 천천히 나타남
+(function heroBg() {
+  const v = document.querySelector('.hero-bg');
+  if (!v) return;
+  const show = () => v.classList.add('ready');
+  if (v.readyState >= 3) show(); else v.addEventListener('canplay', show, { once: true });
+  const p = v.play && v.play(); if (p && p.catch) p.catch(() => show());
+})();
