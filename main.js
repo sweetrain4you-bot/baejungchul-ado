@@ -128,3 +128,35 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
     } finally { send.disabled = false; }
   });
 })();
+
+// 스크롤 패럴럭스 (글자만, 아주 살짝)
+(function parallax() {
+  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  const hero = document.querySelector('.hero');
+  const heroText = document.querySelector('.hero-inner');
+  const items = [];
+  const add = (sel, speed) => document.querySelectorAll(sel).forEach(el => items.push({ el, speed, y: 0 }));
+  add('.section-head', 0.07);
+  add('.about-text .big', 0.06);
+  add('.craft-type .yr', 0.08);
+  let ticking = false;
+  function frame() {
+    ticking = false;
+    const vh = innerHeight, sy = scrollY, k = innerWidth <= 600 ? 0.6 : 1;
+    if (sy < hero.offsetHeight) {
+      heroText.style.translate = `0 ${sy * 0.28 * k}px`;
+      mark.style.translate = `0 ${sy * 0.12 * k}px`;
+    }
+    items.forEach(it => {
+      const r = it.el.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      const d = (r.top + r.height / 2 - it.y) - vh / 2;
+      it.y = Math.max(-40, Math.min(40, d * it.speed * k));
+      it.el.style.translate = `0 ${it.y.toFixed(1)}px`;
+    });
+  }
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  addEventListener('scroll', req, { passive: true });
+  addEventListener('resize', req);
+  frame();
+})();
