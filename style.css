@@ -254,10 +254,8 @@ b { font-weight: 600; }
 .visit dt { color: #b9ae96; font-size: 14px; padding-top: 2px; }
 .visit dd a { text-decoration: none; }
 .visit .hint { font-size: 13px; color: #b9ae96; margin-left: 4px; }
-.mini-map { width: 380px; max-width: 100%; }
-.mini-map iframe { display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid rgba(239,233,220,.18); filter: grayscale(1) contrast(1.05) brightness(.92); }
-.mini-map .map-link { display: inline-block; margin-top: 10px; font-size: 13px; color: #b9ae96; text-decoration: none; }
-.mini-map .map-link:hover { color: #efe9dc; }
+.visit .map-link { margin-left: 8px; font-size: 13px; color: #b9ae96; text-decoration: none; white-space: nowrap; }
+.visit .map-link:hover { color: #efe9dc; }
 
 /* ── FOOTER ── */
 .footer { text-align: center; padding: 56px 16px; background: #0e161e; color: #8f8778; font-size: 14px; }
@@ -278,7 +276,6 @@ b { font-weight: 600; }
   .numbers div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .portrait-fig { max-width: 240px; }
-  .mini-map { width: 100%; }
   .mother .books { max-width: 360px; }
   .mother, .videos { grid-template-columns: 1fr; gap: 28px; }
   .wide-photo img { aspect-ratio: 16 / 10; }
