@@ -169,10 +169,18 @@ b { font-weight: 600; }
 .craft-head h3::before, .craft-head h3::after { content: ""; width: 40px; height: 1px; background: var(--seal); }
 .craft-head p { color: var(--muted); font-size: 14px; margin-top: 6px; letter-spacing: .04em; }
 .craft { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.craft article { background: var(--paper); padding: 36px 30px; }
+.craft article { background: var(--paper); padding: 0 0 32px; }
 .craft h3 { font-size: 24px; margin-bottom: 12px; }
 .craft-label { display: block; font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--seal); letter-spacing: .12em; margin-bottom: 14px; }
 .craft p { font-size: 15px; color: var(--ink-2); }
+.craft article > :not(.craft-img) { margin-left: 28px; margin-right: 28px; }
+.craft-img { position: relative; margin: 0 0 26px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--deep); }
+.craft-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85) contrast(1.03); }
+.craft-img figcaption { position: absolute; left: 14px; bottom: 12px; font-size: 12px; color: #efe9dc; letter-spacing: .05em; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.craft-type { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #efe9dc;
+  background: radial-gradient(ellipse at 70% 20%, rgba(168,50,30,.28), transparent 60%), var(--deep); }
+.craft-type .yr { font-family: var(--serif); font-weight: 700; font-size: 64px; letter-spacing: .06em; color: #e2c48c; }
+.craft-type .to { font-size: 13px; color: #b9ae96; letter-spacing: .08em; }
 
 /* ── TIMELINE ── */
 .timeline { list-style: none; position: relative; max-width: 820px; }
