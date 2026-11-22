@@ -160,3 +160,52 @@ document.querySelectorAll('.section, .numbers').forEach(el => io.observe(el));
   addEventListener('resize', req);
   frame();
 })();
+
+// 스크롤 타이포 애니메이션: 제목은 글자씩, 큰 문장은 줄씩 올라옴
+(function typo() {
+  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  const lines = el => {
+    el.innerHTML = el.innerHTML.split(/<br[^>]*>/i)
+      .map((s, i) => `<span class="ln"><span class="ln-i" style="--i:${i}">${s.trim()}</span></span>`).join('');
+    el.classList.add('typo');
+  };
+  const chars = el => {
+    const t = el.textContent.trim();
+    el.setAttribute('aria-label', t);
+    el.innerHTML = [...t].map((c, i) => `<span class="ch" aria-hidden="true" style="--i:${i}">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+    el.classList.add('typo');
+  };
+  document.querySelectorAll('.hero h1, .about-text .big').forEach(lines);
+  document.querySelectorAll('.section-head h2, .craft-type .yr').forEach(chars);
+
+  const hero = document.querySelector('.hero h1');
+  requestAnimationFrame(() => setTimeout(() => hero.classList.add('on'), 150));
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { threshold: 0.4 });
+  document.querySelectorAll('.typo').forEach(el => el !== hero && io.observe(el));
+})();
+
+// 첫 화면 아래 숫자: 보이면 0부터 힘있게 올라감
+(function countUp() {
+  const box = document.querySelector('.numbers');
+  if (!box || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  const nums = [...box.querySelectorAll('strong')].map(s => {
+    const node = s.firstChild, raw = node.textContent.trim();
+    const dec = (raw.split('.')[1] || '').length, to = parseFloat(raw.replace(/,/g, ''));
+    const fmt = n => dec ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US');
+    node.textContent = fmt(0);
+    return { node, to, fmt };
+  });
+  const run = () => nums.forEach((n, i) => {
+    const start = performance.now() + i * 140, dur = 1800;
+    const step = now => {
+      const t = Math.min(1, Math.max(0, (now - start) / dur));
+      n.node.textContent = n.fmt(n.to * (1 - Math.pow(1 - t, 4)));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+  const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); io.disconnect(); } }, { threshold: 0.5 });
+  io.observe(box);
+})();
