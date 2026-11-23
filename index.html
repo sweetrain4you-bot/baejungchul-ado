@@ -297,7 +297,8 @@
   <p>© 2026 배정철어도. All rights reserved.</p>
 </footer>
 
-<script src="news.js?v=2"></script>
+<!-- news.js 는 GitHub에서 고치면 10분 안에 반영되도록 주소를 10분마다 바꿔 불러옵니다 (Cloudflare 캐시 회피) -->
+<script>document.write('<script src="news.js?t=' + Math.floor(Date.now() / 600000) + '"><\/script>');</script>
 <script src="main.js?v=13"></script>
 <!-- 방문 통계: GoatCounter (쿠키 없음) -->
 <script data-goatcounter="https://baejungchul.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
