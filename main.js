@@ -9,34 +9,54 @@ links.addEventListener('click', e => {
   if (e.target.tagName === 'A') { links.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
 });
 
-// 소식 렌더링 (news.js 의 NEWS 목록을 사용)
+// 어도 소식: news.js 의 공지(NEWS)·소식지(LETTERS)가 있을 때만 섹션과 메뉴가 나타남
 (function renderNews() {
-  const list = document.getElementById('news-list');
-  const more = document.getElementById('news-more');
-  const items = (typeof NEWS !== 'undefined' ? NEWS : []);
-  const SHOW = 3;
+  const sec = document.getElementById('news');
+  const notices = typeof NEWS !== 'undefined' ? NEWS : [];
+  const letters = typeof LETTERS !== 'undefined' ? LETTERS : [];
+  if (!sec || (!notices.length && !letters.length)) return;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  if (!items.length) { list.innerHTML = '<p class="empty">곧 새로운 소식을 전해 드리겠습니다.</p>'; return; }
-
-  list.innerHTML = items.map((n, i) => `
-    <article class="news-item${i >= SHOW ? ' is-hidden' : ''}">
-      <time>${esc(n.date)}</time>
-      <div>
-        <h3>${esc(n.title)}</h3>
-        <p>${esc(n.body)}</p>
-        ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">자세히 보기 →</a>` : ''}
-      </div>
-    </article>`).join('');
-
-  if (items.length > SHOW) {
-    more.hidden = false;
-    more.addEventListener('click', () => {
-      list.querySelectorAll('.is-hidden').forEach(el => el.classList.remove('is-hidden'));
-      more.hidden = true;
-    });
+  if (notices.length) {
+    const SHOW = 3, list = document.getElementById('news-list'), more = document.getElementById('news-more');
+    document.getElementById('notice-block').hidden = false;
+    list.innerHTML = notices.map((n, i) => `
+      <article class="news-item${i >= SHOW ? ' is-hidden' : ''}">
+        <time>${esc(n.date)}</time>
+        <div>
+          <h3>${esc(n.title)}</h3>
+          ${n.body ? `<p>${esc(n.body)}</p>` : ''}
+          ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">자세히 보기 →</a>` : ''}
+        </div>
+      </article>`).join('');
+    if (notices.length > SHOW) {
+      more.hidden = false;
+      more.addEventListener('click', () => {
+        list.querySelectorAll('.is-hidden').forEach(el => el.classList.remove('is-hidden'));
+        more.hidden = true;
+      });
+    }
   }
+
+  if (letters.length) {
+    document.getElementById('letters-block').hidden = false;
+    document.getElementById('letters-list').innerHTML = letters.map(l => `
+      <a class="letter" href="${esc(l.file || l.cover)}" target="_blank" rel="noopener">
+        <span class="cover"><img src="${esc(l.cover)}" alt="「어도 이야기」 ${esc(l.issue)} 표지" loading="lazy"></span>
+        <span class="issue">${esc(l.issue)}${l.date ? ' · ' + esc(l.date) : ''}</span>
+        <span class="title">${esc(l.title)}</span>
+        ${l.summary ? `<span class="sum">${esc(l.summary)}</span>` : ''}
+      </a>`).join('');
+  }
+
+  sec.hidden = false;
+  const link = document.querySelector('.links a[href="#news"]');
+  if (link) link.hidden = false;
 })();
+
+// 보이는 섹션 순서대로 번호(01, 02 …)를 다시 매김
+document.querySelectorAll('.section:not([hidden]) .section-head .num')
+  .forEach((n, i) => { n.textContent = String(i + 1).padStart(2, '0'); });
 
 // 유튜브 영상: 누를 때만 플레이어를 불러옵니다 (가볍고 광고·추천이 먼저 뜨지 않음)
 document.querySelectorAll('.video-card').forEach(card => {

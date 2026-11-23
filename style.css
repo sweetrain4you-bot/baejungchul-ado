@@ -388,3 +388,19 @@ b { font-weight: 600; }
 /* 자연산 사진은 밝은 회색이라 윤기를 더 진하게 */
 .craft article:nth-child(1) .craft-img::after {
   background-image: linear-gradient(115deg, rgba(255,250,238,0) 43%, rgba(255,250,238,.5) 50%, rgba(255,250,238,0) 57%); }
+
+/* 어도 소식: 공지 + 소식지 「어도 이야기」 */
+[hidden] { display: none !important; }
+.news-block + .news-block { margin-top: 72px; }
+.news-sub { font-family: var(--serif); font-size: 15px; font-weight: 600; letter-spacing: .12em; color: var(--seal); margin-bottom: 20px; }
+.letters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 28px; }
+.letter { display: block; text-decoration: none; color: inherit; }
+.letter .cover { display: block; aspect-ratio: 1 / 1.414; overflow: hidden; background: var(--paper-2); box-shadow: 0 10px 28px rgba(20,32,43,.14); transition: transform .4s ease, box-shadow .4s ease; }
+.letter .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.letter:hover .cover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(20,32,43,.2); }
+.letter .issue { display: block; margin-top: 16px; font-size: 12px; letter-spacing: .08em; color: var(--muted); }
+.letter .title { display: block; margin-top: 4px; font-family: var(--serif); font-size: 17px; line-height: 1.5; }
+.letter:hover .title { color: var(--seal); }
+.letter .sum { display: block; margin-top: 6px; font-size: 13px; line-height: 1.7; color: var(--ink-2); }
+@media (max-width: 900px) { .letters { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .letters { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; } }
