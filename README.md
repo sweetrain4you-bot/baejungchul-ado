@@ -13,7 +13,7 @@
 
 1. https://github.com/sweetrain4you-bot/baejungchul-ado/blob/main/news.js 접속 (GitHub 로그인)
 2. 오른쪽 위 연필(✏️) 아이콘 → 파일 안의 예시를 참고해 `const NEWS = [` 또는 `const LETTERS = [` 바로 아래에 블록을 붙여넣고 수정
-3. **Commit changes** 클릭 → 1~2분 뒤 배정철어도.kr 에 반영
+3. **Commit changes** 클릭 → 1~2분 뒤 uhdo.kr 에 반영
 
 ```js
   // 공지
@@ -39,6 +39,7 @@
 - 저장소의 `images/` 폴더에 `portrait.jpg` 업로드(Add file → Upload files) 후 `index.html`의 `<img ...>` 주석을 풉니다.
 
 ## 공개 정보
-- 주소: https://배정철어도.kr (GitHub Pages, 저장소 `sweetrain4you-bot/baejungchul-ado`)
+- 주소: https://uhdo.kr (GitHub Pages, 저장소 `sweetrain4you-bot/baejungchul-ado`)
+- 옛 주소 https://배정철어도.kr 은 Cloudflare 리디렉트 규칙으로 uhdo.kr 로 넘어갑니다 (도메인 갱신은 계속해 주세요).
 - `CNAME` 파일은 도메인 연결용이니 지우지 마세요.
-- DNS(후이즈): A `@` → 185.199.108.153 / .109.153 / .110.153 / .111.153, CNAME `www` → sweetrain4you-bot.github.io
+- uhdo.kr DNS(후이즈): A `@` → 185.199.108.153 / .109.153 / .110.153 / .111.153, CNAME `www` → sweetrain4you-bot.github.io
