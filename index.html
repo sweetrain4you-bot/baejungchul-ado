@@ -302,6 +302,8 @@
 <script>document.write('<script src="news.js?t=' + Math.floor(Date.now() / 600000) + '"><\/script>');</script>
 <script src="main.js?v=13"></script>
 <!-- 방문 통계: GoatCounter (쿠키 없음) -->
+<!-- 주소 뒤 ?꼬리는 버리고 경로만 셉니다. 유입 경로는 ?ref=이름 으로 붙이면 Referrer 칸에 따로 잡힙니다 (예: uhdo.kr/?ref=table) -->
+<script>window.goatcounter = { path: function () { return location.pathname || '/'; } };</script>
 <script data-goatcounter="https://baejungchul.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
