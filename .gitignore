@@ -9,3 +9,6 @@ KakaoTalk_*
 !newsletters/*.pdf
 *.hwp
 *.docx
+
+# 보관 폴더(내린 사진·시안)는 공개하지 않음
+배정철어도_보관/
