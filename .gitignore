@@ -3,3 +3,9 @@ QR코드/
 KakaoTalk_*
 *.mp4
 !videos/*.mp4
+
+# 계약서 등 내부 문서는 공개 저장소에 올리지 않음 (소식지 PDF만 예외)
+*.pdf
+!newsletters/*.pdf
+*.hwp
+*.docx
